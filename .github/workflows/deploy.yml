@@ -27,9 +27,14 @@ jobs:
       - name: Build
         run: npm run build -- --configuration production --base-href /quality/
 
+      - name: Copy index.html to 404.html
+        run: cp dist/quality/browser/index.html dist/quality/browser/404.html
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist/quality/browser
           branch: gh-pages
-          clean: true 
+          clean: true
+          clean-exclude: |
+            .nojekyll 
