@@ -1,15 +1,15 @@
 {
-  "name": "quality-education2",
+  "name": "quality",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:quality-education2": "node dist/quality-education2/server/server.mjs",
-    "server": "json-server --watch src/assets/data/db.json --port 3000",
-    "deploy": "ng deploy --base-href=/quality/"
+    "server": "json-server --watch src/assets/data/db.json --port 3000 --host 0.0.0.0 --cors",
+    "dev": "concurrently \"npm run server\" \"npm start\"",
+    "deploy": "ng build --configuration production --base-href=/quality/ && npx angular-cli-ghpages --dir=dist/quality/browser"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +38,7 @@
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
     "angular-cli-ghpages": "^2.0.3",
+    "concurrently": "^8.2.2",
     "jasmine-core": "~5.6.0",
     "json-server": "^1.0.0-beta.3",
     "karma": "~6.4.0",
