@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:quality-education2": "node dist/quality-education2/server/server.mjs",
-    "server": "json-server --watch src/assets/data/db.json --port 3000"
+    "server": "json-server --watch src/assets/data/db.json --port 3000",
+    "deploy": "ng deploy --base-href=/quality/"
   },
   "private": true,
   "dependencies": {
